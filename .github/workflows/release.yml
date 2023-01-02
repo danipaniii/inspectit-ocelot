@@ -101,6 +101,7 @@ jobs:
         run: |
           npm install
           npm run version ${{ github.ref_name }}
+          git pull
           git add versions.json versioned_docs versioned_sidebars
           git config --global user.name 'NTTechnicalUser'
           git config --global user.email 'NTTechnicalUser@users.noreply.github.com'
