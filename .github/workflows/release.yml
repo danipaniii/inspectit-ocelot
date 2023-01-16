@@ -103,6 +103,7 @@ jobs:
         run: |
           npm install
           npm run version ${{ github.ref_name }}
+          git fetch
           git checkout master
           git pull
           git add versions.json versioned_docs versioned_sidebars
