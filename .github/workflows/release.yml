@@ -68,6 +68,8 @@ jobs:
       - name: Build Docker Images
         run: ./gradlew dockerTag -PbuildVersion=${{ github.ref_name }}
       - name: Push Docker Images
+        env:
+          DOCKER_TOKEN: ${{ env.DOCKER_TOKEN }}
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
           docker push aaronweikru/inspectit-ocelot-agent:${{ github.ref_name }}
