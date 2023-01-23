@@ -109,14 +109,14 @@ jobs:
         with:
           context: .
           push: true
-          tags: danipaniii/inspectit-ocelot-agent{{ github.ref_name }}, danipaniii/inspectit-ocelot-agent:latest
+          tags: danipaniii/inspectit-ocelot-agent${{ github.ref_name }}, danipaniii/inspectit-ocelot-agent:latest
           file: ./inspectit-ocelot-agent/docker/Dockerfile
       - name: Build and push inspectit-ocelot-configurationserver image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: danipaniii/inspectit-ocelot-configurationserver{{ github.ref_name }}, danipaniii/inspectit-ocelot-configurationserver:latest
+          tags: danipaniii/inspectit-ocelot-configurationserver${{ github.ref_name }}, danipaniii/inspectit-ocelot-configurationserver:latest
           file: ./components/inspectit-ocelot-configurationserver/docker/Dockerfile
 
   build_documentation:
