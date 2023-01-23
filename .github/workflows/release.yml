@@ -50,7 +50,7 @@ jobs:
       - name: Upload inspectit-ocelot-configurationserver jar
         uses: actions/upload-artifact@v3
         with:
-          name: inspectit-ocelot-agent-jar
+          name: inspectit-ocelot-configurationserver-jar
           path: artifacts/inspectit-ocelot-configurationserver-${{ github.ref_name }}.jar 
       - name: Calculate checksums of release artifacts
         working-directory: ./artifacts
