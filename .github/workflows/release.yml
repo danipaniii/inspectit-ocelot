@@ -70,7 +70,7 @@ jobs:
         env:
           DOCKER_TOKEN: ${{ env.DOCKER_TOKEN }}
         run: |
-          docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
+          docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin  ${{ secrets.DOCKER_HUB_PASSWORD }}
           docker push danipaniii/inspectit-ocelot-agent:${{ github.ref_name }}
           docker push danipaniii/inspectit-ocelot-agent:latest
           docker push danipaniii/inspectit-ocelot-configurationserver:${{ github.ref_name }}
@@ -106,7 +106,7 @@ jobs:
           git config --global user.name 'NTTechnicalUser'
           git config --global user.email 'NTTechnicalUser@users.noreply.github.com'
           git commit -m "Publish documentation for release ${{ github.ref_name }}"
-          git push origin HEAD:master
+          git push -f origin HEAD:master
       - name: Install Build Dependencies
         run: yarn install --frozen-lockfile
       - name: Build Website
