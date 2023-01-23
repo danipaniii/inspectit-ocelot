@@ -44,14 +44,14 @@ jobs:
       # Uploading jars to create docker images
       - name: Upload inspectit-ocelot-agent jar
         uses: actions/upload-artifact@v3
-          with:
-            name: inspectit-ocelot-agent-jar
-            path: artifacts/inspectit-ocelot-agent-${{ github.ref_name }}.jar
+        with:
+          name: inspectit-ocelot-agent-jar
+          path: artifacts/inspectit-ocelot-agent-${{ github.ref_name }}.jar
       - name: Upload inspectit-ocelot-configurationserver jar
         uses: actions/upload-artifact@v3
-          with:
-            name: inspectit-ocelot-agent-jar
-            path: artifacts/inspectit-ocelot-configurationserver-${{ github.ref_name }}.jar 
+        with:
+          name: inspectit-ocelot-agent-jar
+          path: artifacts/inspectit-ocelot-configurationserver-${{ github.ref_name }}.jar 
       - name: Calculate checksums of release artifacts
         working-directory: ./artifacts
         run: for f in *; do sha256sum "$f" >> inspectit-ocelot-sha256-checksums.txt; done
