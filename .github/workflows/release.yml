@@ -54,7 +54,6 @@ jobs:
           name: Version ${{ github.ref_name }}
           body: "You can also find the corresponding documentation online under the following link: [inspectIT Ocelot Documentation](http://docs.inspectit.rocks)"
 
-
   build_and_publish_docker_images:
     name: 'Build and Push Docker Images'
     runs-on: ubuntu-latest
@@ -72,10 +71,10 @@ jobs:
           DOCKER_TOKEN: ${{ env.DOCKER_TOKEN }}
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker push aaronweikru/inspectit-ocelot-agent:${{ github.ref_name }}
-          docker push aaronweikru/inspectit-ocelot-agent:latest
-          docker push aaronweikru/inspectit-ocelot-configurationserver:${{ github.ref_name }}
-          docker push aaronweikru/inspectit-ocelot-configurationserver:latest
+          docker push danipaniii/inspectit-ocelot-agent:${{ github.ref_name }}
+          docker push danipaniii/inspectit-ocelot-agent:latest
+          docker push danipaniii/inspectit-ocelot-configurationserver:${{ github.ref_name }}
+          docker push danipaniii/inspectit-ocelot-configurationserver:latest
 
   build_documentation:
     name: "Build and Publish Release Documentation"
@@ -103,9 +102,6 @@ jobs:
         run: |
           npm install
           npm run version ${{ github.ref_name }}
-          git fetch
-          git checkout master
-          git pull
           git add versions.json versioned_docs versioned_sidebars
           git config --global user.name 'NTTechnicalUser'
           git config --global user.email 'NTTechnicalUser@users.noreply.github.com'
