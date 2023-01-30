@@ -61,7 +61,7 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3.5.0
         with:
           # Config for the Changelog, reference: https://github.com/marketplace/actions/release-changelog-builder
-          configuration: ".github/workflows/eumserver-release-config.json"
+          configuration: ".github/workflows/changelog-release-config.json"
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.14
         with:
