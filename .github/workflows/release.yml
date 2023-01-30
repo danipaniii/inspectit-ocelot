@@ -70,7 +70,9 @@ jobs:
           generate_release_notes: true
           token: ${{ github.token }}
           name: Version ${{ github.ref_name }}
-          body: "You can also find the corresponding documentation online under the following link: [inspectIT Ocelot Documentation](http://docs.inspectit.rocks)"
+          body: |
+          "You can also find the corresponding documentation online under the following link: [inspectIT Ocelot Documentation](http://docs.inspectit.rocks)"
+          ${{ steps.build_changelog.outputs.changelog }}
 
   publish_docker_image:
     name: "Publish docker image"
