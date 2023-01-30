@@ -55,7 +55,7 @@ jobs:
           path: artifacts/inspectit-ocelot-configurationserver-${{ github.ref_name }}.jar 
       - name: Calculate checksums of release artifacts
         working-directory: ./artifacts
-        run: for f in *; do sha256sum "$f" >> inspectit-ocelot-sha256-checksums.txt; done
+          run: for f in *; do sha256sum "$f" >> inspectit-ocelot-sha256-checksums.txt; done
       - name: "Build Changelog"
           id: build_changelog
           uses: mikepenz/release-changelog-builder-action@v3.5.0
