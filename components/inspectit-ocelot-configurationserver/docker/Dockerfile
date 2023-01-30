@@ -1,4 +1,4 @@
 FROM openjdk:11-jre-slim
-ADD inspectit-ocelot-configurationserver.jar /
-ADD entrypoint.sh  /
+
+ADD ./components/inspectit-ocelot-configurationserver/docker/  /
 ENTRYPOINT ["sh", "/entrypoint.sh"]

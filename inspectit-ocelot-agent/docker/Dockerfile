@@ -1,8 +1,7 @@
 FROM busybox
 
-ADD inspectit-ocelot-agent.jar /
+ADD inspectit-ocelot-agent/docker/  /
 RUN ln /inspectit-ocelot-agent.jar /javaagent.jar &&\
     chmod -R go+r /javaagent.jar
 
-ADD entrypoint.sh  /
 ENTRYPOINT ["sh", "/entrypoint.sh"]
