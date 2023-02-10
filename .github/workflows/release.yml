@@ -60,8 +60,9 @@ jobs:
           token: ${{ github.token }}
           name: Version ${{ github.ref_name }}
           body: |
-            ${{ steps.build_changelog.outputs.changelog }}
             "You can also find the corresponding documentation online under the following link: [inspectIT Ocelot Documentation](http://docs.inspectit.rocks)"
+            ${{ steps.build_changelog.outputs.changelog }}
+            
 
   build_and_publish_docker_images:
     name: "Build and Push Docker Images"
@@ -79,9 +80,9 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
           docker push inspectit/inspectit-ocelot-agent:${{ github.ref_name }}
-          docker push inspectit/inspectit-ocelot-agent:latest
+         # docker push inspectit/inspectit-ocelot-agent:latest
           docker push inspectit/inspectit-ocelot-configurationserver:${{ github.ref_name }}
-          docker push inspectit/inspectit-ocelot-configurationserver:latest
+         # docker push inspectit/inspectit-ocelot-configurationserver:latest
 
   build_documentation:
     name: "Build and Publish Release Documentation"
