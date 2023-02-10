@@ -86,11 +86,11 @@ jobs:
         run: ./gradlew dockerTag -PbuildVersion=${{ github.ref_name }}
       - name: Push Docker Images
         run: |
-          docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker push danipaniii/inspectit-ocelot-agent:${{ github.ref_name }}
-          docker push danipaniii/inspectit-ocelot-agent:latest
-          docker push danipaniii/inspectit-ocelot-configurationserver:${{ github.ref_name }}
-          docker push danipaniii/inspectit-ocelot-configurationserver:latest
+          docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin  ${{ secrets.DOCKER_HUB_PASSWORD }}
+          docker push inspectit/inspectit-ocelot-agent:${{ github.ref_name }}
+          docker push inspectit/inspectit-ocelot-agent:latest
+          docker push inspectit/inspectit-ocelot-configurationserver:${{ github.ref_name }}
+          docker push inspectit/inspectit-ocelot-configurationserver:latest
 
   build_documentation:
     name: "Build and Publish Release Documentation"
