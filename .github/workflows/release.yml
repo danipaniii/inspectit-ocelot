@@ -73,24 +73,24 @@ jobs:
           body: ${{ steps.build_changelog.outputs.changelog }}
 
     build_and_publish_docker_images:
-    name: 'Build and Push Docker Images'
-    runs-on: ubuntu-latest
-    needs: build_and_release
-    environment: release
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Build Docker Images
-        run: ./gradlew dockerTag -PbuildVersion=${{ github.ref_name }}
-      - name: Push Docker Images
-        run: |
-          docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker push danipaniii/inspectit-ocelot-agent:${{ github.ref_name }}
-          docker push danipaniii/inspectit-ocelot-agent:latest
-          docker push danipaniii/inspectit-ocelot-configurationserver:${{ github.ref_name }}
-          docker push danipaniii/inspectit-ocelot-configurationserver:latest
+      name: 'Build and Push Docker Images'
+      runs-on: ubuntu-latest
+      needs: build_and_release
+      environment: release
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Grant execute permission for gradlew
+          run: chmod +x gradlew
+        - name: Build Docker Images
+          run: ./gradlew dockerTag -PbuildVersion=${{ github.ref_name }}
+        - name: Push Docker Images
+          run: |
+            docker login -u ${{ secrets.DOCKER_HUB_USER }} -p  ${{ secrets.DOCKER_HUB_PASSWORD }}
+            docker push danipaniii/inspectit-ocelot-agent:${{ github.ref_name }}
+            docker push danipaniii/inspectit-ocelot-agent:latest
+            docker push danipaniii/inspectit-ocelot-configurationserver:${{ github.ref_name }}
+            docker push danipaniii/inspectit-ocelot-configurationserver:latest
 
   build_documentation:
     name: "Build and Publish Release Documentation"
